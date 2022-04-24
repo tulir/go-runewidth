@@ -112,7 +112,7 @@ func NewCondition() *Condition {
 // RuneWidth returns the number of cells in r.
 // See http://www.unicode.org/reports/tr11/
 func (c *Condition) RuneWidth(r rune) int {
-	if r < 0 || r > 0x10FFFF {
+	if (r < 0 || r > 0x10FFFF) || (r >= 0xFE00 && r <= 0xFE0F) {
 		return 0
 	}
 	if len(c.combinedLut) > 0 {
